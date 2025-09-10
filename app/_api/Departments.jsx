@@ -7,8 +7,8 @@ function Departments() {
     const [activeTab, setActiveTab] = useState(null);
 
     useEffect(() => {
-        // 2. تم تصحيح عنوان URL إلى http
-        fetch("http://localhost:5000/departments/allDepartments")
+        // 2. تم تصحيح عنوان URL ليستخدم متغير البيئة
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/departments/allDepartments`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('Failed to fetch departments');
@@ -69,7 +69,7 @@ function Departments() {
                             <h3 className="text-2xl font-bold mb-4">{activeDepartment.name}</h3>
                             {activeDepartment.image && (
                                 <img 
-                                    src={`http://localhost:5000/files/${activeDepartment.image}`} 
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}/files/${activeDepartment.image}`} 
                                     alt={activeDepartment.name} 
                                     className="w-full h-64 object-cover rounded-lg mb-4"
                                 />

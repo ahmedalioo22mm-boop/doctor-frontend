@@ -15,7 +15,7 @@ function AddAppointment() {
   useEffect(() => {
         const fetchDoctor = async () => {
             try {
-                const res = await fetch("http://localhost:5000/doctors/alldocter");
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors/alldocter`);
                 if (!res.ok) {
                     throw new Error(`HTTP error! status: ${res.status}`);
                 }
@@ -52,7 +52,7 @@ function AddAppointment() {
         console.log("Token:", token);
 
         try {
-            const res = await fetch("http://localhost:5000/appointments/createAppointment",{
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointments/createAppointment`,{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

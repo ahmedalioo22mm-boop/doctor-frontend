@@ -6,8 +6,8 @@ import { Stethoscope, Hospital, FlaskConical, Award } from 'lucide-react';
 async function getStats() {
   try {
     const [doctorsRes, departmentsRes] = await Promise.all([
-      fetch("http://localhost:5000/doctors/count", { cache: 'no-store' }),
-      fetch("http://localhost:5000/departments/count", { cache: 'no-store' })
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors/count`, { cache: 'no-store' }),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/departments/count`, { cache: 'no-store' })
     ]);
 
     if (!doctorsRes.ok || !departmentsRes.ok) {
@@ -90,9 +90,9 @@ export default State;
 //     useEffect(()=>{
 //         const fetchStats= async()=>{
 //             try {
-//                 const doctorsStats= await fetch("http://localhost:5000/doctors/count")
+//                 const doctorsStats= await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors/count`)
 
-//                 const departmentsStats= await fetch("http://localhost:5000/departments/count")
+//                 const departmentsStats= await fetch(`${process.env.NEXT_PUBLIC_API_URL}/departments/count`)
 
 //                 const  doctorsData = await doctorsStats.json()
 

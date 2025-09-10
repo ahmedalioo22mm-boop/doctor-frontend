@@ -37,7 +37,7 @@ const AddDoctor = () => {
       formData.append("description", form.description);
       if (form.image) formData.append("image", form.image);
 
-      const res = await fetch("http://localhost:5000/doctors/addoctors", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/doctors/addoctors`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
